@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "812553504995",
+    "firebase_url": "https://debt-tracker-9f0f0.firebaseio.com",
+    "project_id": "debt-tracker-9f0f0",
+    "storage_bucket": "debt-tracker-9f0f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812553504995:android:470d34524e2ece44",
+        "android_client_info": {
+          "package_name": "er.debttracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8Z67cSx7PBNAGOBet6KCToz8p18LIs0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812553504995-khhd87cp7vpk0lh6auj1cpqf3p10qj9n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
