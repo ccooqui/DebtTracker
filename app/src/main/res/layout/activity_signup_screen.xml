@@ -1,9 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
     tools:context=".SignupScreen">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="328dp"
+        android:layout_height="237dp"
+        android:layout_gravity="center"
+        app:srcCompat="@mipmap/ic_launcher_logo_background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        tools:context=".SignUpScreen">
+
+            <EditText
+                android:id="@+id/firstNameEntry"
+                android:layout_width="165dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="30dp"
+                android:ems="10"
+                android:hint="First Name"
+                android:backgroundTint="@android:color/holo_orange_light"
+                android:textColorHint="@android:color/holo_orange_light"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/lastNameEntry"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:ems="10"
+                android:hint="Last Name"
+                android:backgroundTint="@android:color/holo_orange_light"
+                android:textColorHint="@android:color/holo_orange_light"
+                android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        tools:context=".SignUpScreen">
+
+            <EditText
+                android:id="@+id/usernameEntry"
+                android:layout_width="165dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="Username/Email"
+                android:backgroundTint="@android:color/holo_orange_light"
+                android:textColorHint="@android:color/holo_orange_light"
+                android:layout_marginLeft="30dp"
+                android:inputType="textEmailAddress"/>
+
+            <EditText
+                android:id="@+id/passwordEntry"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:hint="Password"
+                android:textColorHint="@android:color/holo_orange_light"
+                android:backgroundTint="@android:color/holo_orange_light"
+                android:inputType="textPassword"
+                android:layout_marginLeft="20dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/createAcctBtn"
+        android:background="@color/design_default_color_primary"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Create Account"
+        android:textColor="@android:color/holo_orange_light"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>

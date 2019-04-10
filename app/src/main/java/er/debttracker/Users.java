@@ -4,13 +4,13 @@ import java.util.List;
 
 public class Users {
 
-    private long userID;
+    private String userID;
     private String fName;
     private String lName;
     private String username;
     private String password;
 
-    public Users(long usrID, String name, String lastName, String userName, String pass) {
+    public Users(String usrID, String name, String lastName, String userName, String pass) {
         this.userID = usrID;
         this.fName = name;
         this.lName = lastName;
@@ -18,7 +18,7 @@ public class Users {
         this.password = pass;
     }
 
-    public long getUserID(){
+    public String getUserID(){
         return userID;
     }
 
@@ -37,6 +37,15 @@ public class Users {
     public String getPassword(){
         return password;
     }
+
+
+    //Setter Functions
+
+    public void setUserID(String UserID){userID = UserID;}
+    public void setFName(String FName){fName = FName;}
+    public void setLName(String LName){lName = LName;}
+    public void setUsername(String Username){username= Username;}
+    public void setPassword(String Password){password = Password;}
 
 
     public String toString(){

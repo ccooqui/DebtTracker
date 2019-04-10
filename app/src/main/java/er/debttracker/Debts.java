@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Debts {
 
-    private long debtID;
+    private String debtID;
     private String debtorName;
     private String phone;
     private String balance;
@@ -18,7 +18,7 @@ public class Debts {
 
     public Debts(){}
 
-    public Debts(long DebtID, String DebtorName, String Phone, String Balance, String Credit, String InitialBalance, String DueDate, String FinalDueDate, String DateEntered, String IsCreditorOrDebtor) {
+    public Debts(String DebtID, String DebtorName, String Phone, String Balance, String Credit, String InitialBalance, String DueDate, String FinalDueDate, String DateEntered, String IsCreditorOrDebtor) {
         this.debtID = DebtID;
         this.debtorName = DebtorName;
         this.phone = Phone;
@@ -33,7 +33,7 @@ public class Debts {
 
     //Getter Functions
 
-    public long getDebtID(){
+    public String getDebtID(){
         return debtID;
     }
 
@@ -66,39 +66,39 @@ public class Debts {
 
     //Setter Functions
 
-    public void setDebtID(long DebtID) {
-        DebtID = debtID;
+    public void setDebtID(String DebtID) {
+        debtID = DebtID;
     }
 
     public void setDebtorName(String DebtorName) {
-        DebtorName = debtorName;
+        debtorName = DebtorName;
     }
 
     public void setPhone(String Phone) {
-        Phone = phone;
+        phone = Phone;
     }
 
-    public void setBalance(String Balance) { Balance = balance;   }
+    public void setBalance(String Balance) { balance = Balance;   }
 
-    public void setCredit(String Credit) { Credit = credit; }
+    public void setCredit(String Credit) { credit = Credit; }
 
     public void setInitialBalance(String InitialBalance) {
-        InitialBalance = initialBalance;
+        initialBalance = InitialBalance;
     }
 
     public void setDueDate(String DueDate) {
-        DueDate = dueDate;
+        dueDate = DueDate;
     }
 
     public void setFinalDueDate(String FinalDueDate) {
-        FinalDueDate = finalDueDate;
+        finalDueDate = FinalDueDate;
     }
 
     public void setDateEntered(String DateEntered) {
-        DateEntered = dateEntered;
+        dateEntered = DateEntered;
     }
 
-    public void setIsCreditorOrDebtor(String IsCreditorOrDebtor) { IsCreditorOrDebtor = isCreditorOrDebtor;    }
+    public void setIsCreditorOrDebtor(String IsCreditorOrDebtor) { isCreditorOrDebtor = IsCreditorOrDebtor;    }
 
     public String toString(){
         return "" + debtorName + "";
