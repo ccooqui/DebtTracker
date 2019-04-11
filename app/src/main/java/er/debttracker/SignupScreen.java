@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -30,6 +32,8 @@ public class SignupScreen extends AppCompatActivity {
     private EditText fNameEntry, lNameEntry, usernameEntry, passwordEntry;
     private String fName, lName, username, password;
     private FirebaseAuth auth;
+    private DatabaseReference fUsersDatabase;
+
     private ProgressDialog PD;
     private static List<Users> userList = new ArrayList<>();
 
@@ -39,6 +43,7 @@ public class SignupScreen extends AppCompatActivity {
         setContentView(R.layout.activity_signup_screen);
 
         auth = FirebaseAuth.getInstance();
+        fUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
         PD = new ProgressDialog(this);
         PD.setMessage("Loading...");
