@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <android.support.design.widget.TextInputEditText
+            <EditText
                 android:id="@+id/etDebtorName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -36,7 +36,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Debt Amount"
+                android:hint="Balance Amount"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/etInitialBalance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Full Debt Amount"
                 android:inputType="numberDecimal" />
 
             <EditText

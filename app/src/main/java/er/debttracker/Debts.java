@@ -1,5 +1,10 @@
 package er.debttracker;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -9,26 +14,26 @@ public class Debts {
     private String debtorName;
     private String phone;
     private String balance;
-    private String credit;
     private String initialBalance;
     private String dueDate;
     private String finalDueDate;
     private String dateEntered;
-    private String isCreditorOrDebtor;
+    private Boolean isCreditorOrDebtor;
 
     public Debts(){}
 
-    public Debts(String DebtID, String DebtorName, String Phone, String Balance, String Credit, String InitialBalance, String DueDate, String FinalDueDate, String DateEntered, String IsCreditorOrDebtor) {
-        this.debtID = DebtID;
+    public Debts(String DebtorName, String Phone, String Balance, String InitialBalance, String FinalDueDate, Boolean isCreditorOrDebtor) {
         this.debtorName = DebtorName;
         this.phone = Phone;
         this.balance = Balance;
-        this.credit = Credit;
         this.initialBalance = InitialBalance;
-        this.dueDate = DueDate;
         this.finalDueDate = FinalDueDate;
-        this.dateEntered = DateEntered;
-        this.isCreditorOrDebtor = IsCreditorOrDebtor;
+        this.isCreditorOrDebtor = isCreditorOrDebtor;
+
+        //generate the date of when the debt was created
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String date = df.format(Calendar.getInstance().getTime());
+        this.dateEntered = date;
     }
 
     //Getter Functions
@@ -49,8 +54,6 @@ public class Debts {
         return balance;
     }
 
-    public String getCredit(){ return credit; }
-
     public String getInitialBalance(){
         return initialBalance;
     }
@@ -61,7 +64,7 @@ public class Debts {
 
     public String getDateEntered(){ return dateEntered; }
 
-    public String getIsCreditorOrDebtor(){ return isCreditorOrDebtor; }
+    public Boolean getIsCreditorOrDebtor(){ return isCreditorOrDebtor; }
 
 
     //Setter Functions
@@ -80,7 +83,6 @@ public class Debts {
 
     public void setBalance(String Balance) { balance = Balance;   }
 
-    public void setCredit(String Credit) { credit = Credit; }
 
     public void setInitialBalance(String InitialBalance) {
         initialBalance = InitialBalance;
@@ -98,10 +100,14 @@ public class Debts {
         dateEntered = DateEntered;
     }
 
-    public void setIsCreditorOrDebtor(String IsCreditorOrDebtor) { isCreditorOrDebtor = IsCreditorOrDebtor;    }
+    public void setIsCreditorOrDebtor(Boolean IsCreditorOrDebtor) { isCreditorOrDebtor = IsCreditorOrDebtor;    }
 
     public String toString(){
         return "" + debtorName + "";
+    }
+
+    public Float calculateBalance() {
+        return Float.parseFloat(this.initialBalance) - Float.parseFloat(this.balance);
     }
 
 }

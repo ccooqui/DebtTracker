@@ -24,8 +24,7 @@ import java.util.Map;
 public class NewDebtActivity extends AppCompatActivity {
 
     private Button btnCreate;
-    private TextInputEditText etDebtorName;
-    private EditText etPhone, etBalance, etDate;
+    private EditText etDebtorName, etPhone, etInitialBalance, etBalance, etDate;
 
     private FirebaseAuth fAuth;
     private DatabaseReference fDebtsDatabase;
@@ -36,9 +35,10 @@ public class NewDebtActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_debt);
 
         btnCreate = (Button) findViewById(R.id.btnCreate);
-        etDebtorName = (TextInputEditText) findViewById(R.id.etDebtorName);
+        etDebtorName = (EditText) findViewById(R.id.etDebtorName);
         etPhone = (EditText) findViewById(R.id.etPhone);
         etBalance = (EditText) findViewById(R.id.etBalance);
+        etInitialBalance = (EditText) findViewById(R.id.etInitialBalance);
         etDate = (EditText) findViewById(R.id.etDate);
 
         fAuth = FirebaseAuth.getInstance();
@@ -48,10 +48,12 @@ public class NewDebtActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String name = etDebtorName.getText().toString().trim();
                 String phone = etPhone.getText().toString().trim();
+                String initialBalance = etInitialBalance.getText().toString().trim();
                 String balance = etBalance.getText().toString().trim();
                 String date = etDate.getText().toString().trim();
+                Debts debt = new Debts(name, phone, balance, initialBalance, date, true);
                 if(!TextUtils.isEmpty(name)){
-                    createDebt(name, phone, balance, date);
+                    createDebt(debt);
                 } else {
                     Snackbar.make(view, "Fill in empty fields", Snackbar.LENGTH_SHORT).show();
                 }
@@ -59,16 +61,14 @@ public class NewDebtActivity extends AppCompatActivity {
         });
     }
 
-    private void createDebt(String name, String phone, String balance, String date) {
+    private void createDebt(Debts debt) {
         if (fAuth.getCurrentUser() != null) {
             final DatabaseReference newDebtRef = fDebtsDatabase.push();
 
             final Map debtMap = new HashMap();
-            debtMap.put("name", name);
-            debtMap.put("phone", phone);
-            debtMap.put("balance", balance);
-            debtMap.put("date", date);
+            debtMap.put("debt", debt);
             debtMap.put("timestamp", ServerValue.TIMESTAMP);
+
             Thread mainThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
