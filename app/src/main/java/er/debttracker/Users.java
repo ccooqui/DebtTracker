@@ -9,13 +9,17 @@ public class Users {
     private String lName;
     private String username;
     private String password;
+    private List<Debts> dList;
 
-    public Users(String usrID, String name, String lastName, String userName, String pass) {
+    public Users(){}
+
+    public Users(String usrID, String name, String lastName, String userName, String pass, List<Debts> debtsList) {
         this.userID = usrID;
         this.fName = name;
         this.lName = lastName;
         this.username = userName;
         this.password = pass;
+        this.dList = debtsList;
     }
 
     public String getUserID(){
@@ -38,6 +42,8 @@ public class Users {
         return password;
     }
 
+    public List<Debts> getdList(){return dList;}
+
 
     //Setter Functions
 
@@ -46,6 +52,7 @@ public class Users {
     public void setLName(String LName){lName = LName;}
     public void setUsername(String Username){username= Username;}
     public void setPassword(String Password){password = Password;}
+    public void setdList(List<Debts> DebtsList){dList = DebtsList;}
 
 
     public String toString(){
