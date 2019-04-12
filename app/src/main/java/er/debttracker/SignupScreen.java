@@ -36,6 +36,7 @@ public class SignupScreen extends AppCompatActivity {
 
     private ProgressDialog PD;
     private static List<Users> userList = new ArrayList<>();
+    private List<Debts> debtsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,9 +90,9 @@ public class SignupScreen extends AppCompatActivity {
 
                                             FirebaseUser user = auth.getCurrentUser();
                                             String id = user.getUid();
-                                            Users newUser = new Users(id, fName, lName, username, password);
-                                            userList.add(newUser);
 
+                                            Users newUser = new Users(id, fName, lName, username, password, debtsList);
+                                            userList.add(newUser);
 
                                             Intent intent = new Intent(SignupScreen.this, WelcomeScreen.class);
                                             startActivity(intent);
@@ -114,25 +115,13 @@ public class SignupScreen extends AppCompatActivity {
                             usernameEntry.setError("Empty Field");
                         } else if (username.length() != 0) usernameEntry.setError(null);
 
-                        /*if (!checkUsernameDB(username)) {
-                            Toast.makeText(
-                                    SignupScreen.this,
-                                    "Account already exists!",
-                                    Toast.LENGTH_LONG).show();
-                        }*/
-
                         if (!validatePassword(password)) {
                             passwordEntry.setError("Invalid Password. Password must be 8 characters or more and has to include at least one capital letter, one lower case letter and one digit.");
                         } else if (validatePassword(password)) passwordEntry.setError(null);
-
-
                     }
-
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             }
         });
     }
@@ -178,22 +167,6 @@ public class SignupScreen extends AppCompatActivity {
             else return false;
         } else return false;
     }
-
-    // Checks if username has already been taken and returns true otherwise
-   /* private boolean checkUsernameDB(String usernameDB) {
-
-        List<String> usernames = new LinkedList<String>();
-        Cursor cur = myUsersDataB.getAllUsers();
-
-        if (cur.getCount() != 0) {
-            while (cur.moveToNext()) {
-                String usrName = cur.getString(cur.getColumnIndex(USER_KEY_USERNAME));
-                usernames.add(usrName);
-            }
-            if (usernames.contains(usernameDB)) return false;
-            else return true;
-        } else return true;
-    }*/
 
     // Checks if password meet the minimun requirements
     //At least 8 characters long, at least one upper case, one lower case and one digit
