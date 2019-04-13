@@ -32,7 +32,6 @@ public class NewDebtActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_debt);
 
         btnCreate = (Button) findViewById(R.id.btnCreate);
         etDebtorName = (EditText) findViewById(R.id.etDebtorName);
@@ -49,6 +48,7 @@ public class NewDebtActivity extends AppCompatActivity {
                 String name = etDebtorName.getText().toString().trim();
                 String phone = etPhone.getText().toString().trim();
                 String initialBalance = etInitialBalance.getText().toString().trim();
+        setContentView(R.layout.activity_new_debt);
                 String balance = etBalance.getText().toString().trim();
                 String date = etDate.getText().toString().trim();
                 Debts debt = new Debts(name, phone, balance, initialBalance, date, true);
