@@ -1,10 +1,24 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="er.debttracker.DashboardActivity">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+    android:id="@+id/nav_debts"
+    android:title="Debts"
+        android:titleCondensed="Debts"
+        />
+
+    <item
+        android:id="@+id/nav_credits"
+        android:title="Credits"
+        android:titleCondensed="Credits"/>
+
+    <item
+    android:id="@+id/nav_add_debt"
+    android:icon="@drawable/ic_action_add_debt"
+    android:title="Add Debt"/>
+
+    <item
+    android:id="@+id/nav_settings"
+    android:icon="@drawable/ic_action_settings"
+    android:title="Account Settings"/>
+
 </menu>

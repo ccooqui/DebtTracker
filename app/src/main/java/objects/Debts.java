@@ -1,4 +1,4 @@
-package er.debttracker;
+package objects;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

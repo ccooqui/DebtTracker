@@ -1,4 +1,4 @@
-package er.debttracker;
+package objects;
 
 import java.util.List;
 

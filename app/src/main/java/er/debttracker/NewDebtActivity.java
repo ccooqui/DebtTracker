@@ -2,7 +2,6 @@ package er.debttracker;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,6 +19,8 @@ import com.google.firebase.database.ServerValue;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import objects.Debts;
 
 public class NewDebtActivity extends AppCompatActivity {
 
