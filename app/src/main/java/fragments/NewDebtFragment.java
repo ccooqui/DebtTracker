@@ -1,7 +1,9 @@
 package fragments;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -129,7 +131,7 @@ public class NewDebtFragment extends Fragment {
         String dInitialBalance = etInitialBalance.getText().toString();
         String dCategory = categoryType.getSelectedItem().toString();
         Boolean categ;
-        if(dCategory == "Debt") categ = true;
+        if(dCategory.equals("Debt") == true) categ = true;
         else categ = false;
 
         if(dName.trim().length() == 0 || dPhone.trim().length() == 0 || dBalance.trim().length() == 0 || dInitialBalance.trim().length() == 0 || selectedDate==null || dCategory.trim().length()==0){
@@ -140,6 +142,7 @@ public class NewDebtFragment extends Fragment {
             Debts d = new Debts(dName, dPhone, dBalance, dInitialBalance, dDueDate, categ);
             createDebt(d);
             Toast.makeText(getContext(), "Debt added to your list", Toast.LENGTH_SHORT).show();
+            clearEntries();
         }
     }
 
@@ -173,5 +176,42 @@ public class NewDebtFragment extends Fragment {
         }
     }
 
+    private void clearEntries(){
+        // Shows an alert dialog that asks the users if they want to clear all of the fields
+        // They entered for a coupon. If they say yes, all the entries are reset. If they say no,
+        // the dialog disappears and their entries remain the same.
+        AlertDialog.Builder clearEntries = new AlertDialog.Builder(mContext);
+        clearEntries.setMessage("Clear all entries?");
+        clearEntries.setCancelable(true);
+
+        clearEntries.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(mContext, "Clearing Entries", Toast.LENGTH_SHORT).show();
+                        etDebtorName = v.findViewById(R.id.etDebtorName);
+                        etPhone = v.findViewById(R.id.etPhone);
+                        etBalance = v.findViewById(R.id.etBalance);
+                        etInitialBalance = v.findViewById(R.id.etInitialBalance);
+                        debtDueDate = v.findViewById(R.id.expiry_date);
+                        etDebtorName.setText(null);
+                        etPhone.setText(null);
+                        etBalance.setText(null);
+                        etInitialBalance.setText(null);
+                        debtDueDate.setText(null);
+                    }
+                });
+
+        clearEntries.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = clearEntries.create();
+        alertDialog.show();
+    }
 
 }

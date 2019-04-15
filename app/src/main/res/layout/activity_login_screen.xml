@@ -21,6 +21,7 @@
             android:ems="10"
             android:hint="Username/Email"
             android:textColorHint="@android:color/holo_orange_light"
+            android:textColor="@android:color/holo_orange_light"
             android:backgroundTint="@android:color/holo_orange_light"
             android:inputType="textPersonName"/>
 
@@ -33,6 +34,7 @@
             android:layout_marginTop="30dp"
             android:ems="10"
             android:hint="Password"
+            android:textColor="@android:color/holo_orange_light"
             android:textColorHint="@android:color/holo_orange_light"
             android:backgroundTint="@android:color/holo_orange_light"
             android:inputType="textPassword"/>
