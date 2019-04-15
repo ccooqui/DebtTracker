@@ -10,7 +10,10 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import fragments.CreditsFragment;
 import fragments.DebtsFragment;
+import fragments.NewDebtFragment;
+import fragments.SettingsFragment;
 
 public class DashboardActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 

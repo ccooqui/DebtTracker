@@ -1,0 +1,177 @@
+package fragments;
+
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
+import er.debttracker.R;
+import objects.Debts;
+
+public class NewDebtFragment extends Fragment {
+
+    // View & Context Setup
+    private Context mContext;
+    View v;
+
+    //UI Elements
+    private Button btnCreate, btnDueDate;
+    private EditText etDebtorName, etPhone, etInitialBalance, etBalance;
+    private TextView debtDueDate;
+    String selectedDate;
+    DatePickerDialog datePickerDialog;
+
+    //Database Elements
+    private FirebaseAuth fAuth;
+    private DatabaseReference fDebtsDatabase;
+
+
+    public static NewDebtFragment newInstance() {
+        return new NewDebtFragment();
+    }
+
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        v = inflater.inflate(R.layout.fragment_new_debt,
+                container, false);
+        mContext = v.getContext();
+
+        // Setting up dropdown to allow a user to select a category for a coupon
+        Spinner spinner = v.findViewById(R.id.categorySpinner);
+        ArrayAdapter<String> categoriesArray = new ArrayAdapter<>(getContext(),
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.category_types));
+        categoriesArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(categoriesArray);
+
+        // Setting up buttons and views
+        btnCreate = v.findViewById(R.id.btnCreate);
+        btnDueDate = v.findViewById(R.id.btnDate);
+        debtDueDate=v.findViewById(R.id.expiry_date);
+        etDebtorName = v.findViewById(R.id.etDebtorName);
+        etPhone = v.findViewById(R.id.etPhone);
+        etBalance = v.findViewById(R.id.etBalance);
+        etInitialBalance = v.findViewById(R.id.etInitialBalance);
+
+        btnDueDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+                int month = Calendar.getInstance().get(Calendar.MONTH);
+                int year = Calendar.getInstance().get(Calendar.YEAR);
+
+                datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int dpYear, int dpMonth , int dpDay) {
+                        dpMonth = dpMonth + 1;
+                        selectedDate = dpMonth + "/" + dpDay + "/" + dpYear;
+                        debtDueDate.setText(selectedDate);
+                        Log.d("NEW_DEBT_FRAG", " "+ selectedDate);
+                    }
+                }, year, month, day);
+                datePickerDialog.show();
+            }
+        });
+
+        btnCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadToList();
+            }
+        });
+
+        fAuth=FirebaseAuth.getInstance();
+        fDebtsDatabase = FirebaseDatabase.getInstance().getReference().child("Debts").child(fAuth.getCurrentUser().getUid());
+
+    return v;
+    }
+
+    private void uploadToList(){
+        // Gathers all of the text in each of the text views and spinner
+        // to create a new Debt to add it to the database.
+        etDebtorName = v.findViewById(R.id.etDebtorName);
+        etPhone = v.findViewById(R.id.etPhone);
+        etBalance = v.findViewById(R.id.etBalance);
+        etInitialBalance = v.findViewById(R.id.etInitialBalance);
+        debtDueDate = v.findViewById(R.id.expiry_date);
+        Spinner categoryType = v.findViewById(R.id.categorySpinner);
+        String dDueDate = selectedDate;
+
+        String dName = etDebtorName.getText().toString();
+        String dPhone = etPhone.getText().toString();
+        String dBalance = etBalance.getText().toString();
+        String dInitialBalance = etInitialBalance.getText().toString();
+        String dCategory = categoryType.getSelectedItem().toString();
+        Boolean categ;
+        if(dCategory == "Debt") categ = true;
+        else categ = false;
+
+        if(dName.trim().length() == 0 || dPhone.trim().length() == 0 || dBalance.trim().length() == 0 || dInitialBalance.trim().length() == 0 || selectedDate==null || dCategory.trim().length()==0){
+            Log.d("NEW_DEBT_FRAG", "Not all fields are filled out");
+            Toast.makeText(getContext(), "Fill out all required fields and choose a Due Date before adding the debt to the list", Toast.LENGTH_LONG).show();
+        } else {
+
+            Debts d = new Debts(dName, dPhone, dBalance, dInitialBalance, dDueDate, categ);
+            createDebt(d);
+            Toast.makeText(getContext(), "Debt added to your list", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void createDebt(Debts debt) {
+        if (fAuth.getCurrentUser() != null) {
+            final DatabaseReference newDebtRef = fDebtsDatabase.push();
+
+            final Map debtMap = new HashMap();
+            debtMap.put("debt", debt);
+            debtMap.put("timestamp", ServerValue.TIMESTAMP);
+
+            Thread mainThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    newDebtRef.setValue(debtMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task){
+                            if(task.isSuccessful()) {
+                                Toast.makeText(getContext(), "Note added to db", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(), "ERROR:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            });
+            mainThread.start();
+
+        } else {
+            Toast.makeText(getContext(), "USER IS NOT SIGNED IN", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+}

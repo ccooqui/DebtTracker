@@ -20,7 +20,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewDebtActivity"></activity>
         <activity android:name=".ForgetAndChangePasswordActivity" />
         <activity android:name=".SignupScreen" />
         <activity android:name=".LoginScreen" />
