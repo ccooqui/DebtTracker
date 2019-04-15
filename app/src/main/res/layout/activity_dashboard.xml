@@ -12,18 +12,26 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/appbar_padding_top"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:paddingTop="0dp"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@android:color/holo_blue_dark">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_weight="1"
-            android:background="?attr/colorPrimary"
+            android:background="@android:color/holo_orange_light"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="@string/app_name">
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/logout_button"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="230dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_logout"/>
 
         </android.support.v7.widget.Toolbar>
 
@@ -33,22 +41,29 @@
             android:layout_height="wrap_content">
 
             <android.support.design.widget.TabItem
-                android:id="@+id/tabItem"
+                android:id="@+id/tabItem1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_1" />
+                android:text="Debts" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_2" />
+                android:text="Credit" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_text_3" />
+                android:icon="@drawable/ic_action_add_debt"/>
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItem4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_action_settings"
+                android:menu="@menu/nav" />
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
