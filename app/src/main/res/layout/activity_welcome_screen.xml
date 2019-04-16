@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/ic_welcome_screen"
+    android:background="@drawable/bg_xxhdpi"
     android:orientation="vertical"
     tools:context=".WelcomeScreen">
 
@@ -14,11 +14,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="250dp"
-        android:layout_marginBottom="15dp"
-        android:background="@android:color/holo_orange_light"
+        android:layout_marginTop="280dp"
+        android:layout_marginBottom="20dp"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp"
+        android:radius="100dp"
+        android:background="@android:color/white"
         android:text="Login"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/holo_orange_dark" />
 
 
     <Button
@@ -27,9 +30,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="15dp"
-        android:background="@android:color/holo_orange_light"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:radius="100dp"
+        android:background="@android:color/white"
         android:text="Sign Up"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/holo_orange_dark" />
 
 
 </LinearLayout>
