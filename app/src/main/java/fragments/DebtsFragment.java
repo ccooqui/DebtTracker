@@ -110,7 +110,7 @@ public class DebtsFragment extends Fragment {
         RecyclerView myRecyclerView = v.findViewById(R.id.debts_recycler_view);
         recycleViewAdapter = new RecycleViewAdapter(getContext(), debtsList);
         myRecyclerView.setAdapter(recycleViewAdapter);
-        GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);
         myRecyclerView.setLayoutManager(mLayoutManager);
     }
 
