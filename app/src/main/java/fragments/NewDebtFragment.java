@@ -18,6 +18,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
+import er.debttracker.GMailSender;
+import er.debttracker.JSSEProvider;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -123,13 +128,13 @@ public class NewDebtFragment extends Fragment {
         etInitialBalance = v.findViewById(R.id.etInitialBalance);
         debtDueDate = v.findViewById(R.id.expiry_date);
         Spinner categoryType = v.findViewById(R.id.categorySpinner);
-        String dDueDate = selectedDate;
+        final String dDueDate = selectedDate;
 
-        String dName = etDebtorName.getText().toString();
-        String dPhone = etPhone.getText().toString();
-        String dBalance = etBalance.getText().toString();
-        String dInitialBalance = etInitialBalance.getText().toString();
-        String dCategory = categoryType.getSelectedItem().toString();
+        final String dName = etDebtorName.getText().toString();
+        final String dPhone = etPhone.getText().toString();
+        final String dBalance = etBalance.getText().toString();
+        final String dInitialBalance = etInitialBalance.getText().toString();
+        final String dCategory = categoryType.getSelectedItem().toString();
         Boolean categ;
         if(dCategory.equals("Debt") == true) categ = true;
         else categ = false;
@@ -143,6 +148,23 @@ public class NewDebtFragment extends Fragment {
             createDebt(d);
             Toast.makeText(getContext(), "Debt added to your list", Toast.LENGTH_SHORT).show();
             clearEntries();
+
+            final String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        GMailSender sender = new GMailSender(
+                                "recoupdebttracker@gmail.com",
+                                "fillmore4020");
+                        sender.sendMail("Debt Confirmation", "A new debt has been added to your account.\n\nDebtor Name: " + dName +
+                                "\nPhone Number: " + dPhone + "\nCurrent Balance: " + dBalance + "\nInitial Balance: " + dInitialBalance +
+                                        "\nDue Date: " + dDueDate + "\nCategory: " + dCategory, "recoupdebttracker@gmail.com", email);
+                    } catch (Exception e) {
+                        Toast.makeText(mContext.getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }).start();
+            Toast.makeText(getContext(), "Email confirmation sent", Toast.LENGTH_SHORT).show();
         }
     }
 
