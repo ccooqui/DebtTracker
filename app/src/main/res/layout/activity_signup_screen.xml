@@ -4,18 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@drawable/bg_xxhdpi"
     android:orientation="vertical"
     tools:context=".SignupScreen">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="328dp"
-        android:layout_height="237dp"
-        android:layout_gravity="center"
-        app:srcCompat="@mipmap/ic_launcher_logo_background" />
-
     <LinearLayout
+        android:layout_marginTop="300dp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"

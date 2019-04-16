@@ -5,19 +5,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/ic_welcome_screen"
+    android:background="@drawable/bg_xxhdpi"
     android:orientation="vertical"
     tools:context=".LoginScreen">
 
         <EditText
             android:id="@+id/usernameText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginTop="250dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             android:ems="10"
             android:hint="Username/Email"
             android:textColorHint="@android:color/holo_orange_light"
@@ -27,10 +25,10 @@
 
         <EditText
             android:id="@+id/passwordText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             android:layout_marginTop="30dp"
             android:ems="10"
             android:hint="Password"
@@ -40,26 +38,26 @@
             android:inputType="textPassword"/>
     <Button
         android:id="@+id/checkEntriesLoginBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:textStyle="bold"
         android:layout_marginTop="100dp"
-        android:background="@android:color/holo_orange_light"
+        android:background="@android:color/white"
         android:text="Login"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/holo_orange_dark" />
 
     <Button
         android:id="@+id/forget_password_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="5dp"
         android:textSize="10dp"
+        android:textStyle="bold"
         android:background="@android:color/transparent"
         android:text="Forgot Password"
-        android:textColor="@android:color/black"
-        android:textStyle="italic" />
+        android:textColor="@android:color/holo_orange_light" />
 
 </LinearLayout>
