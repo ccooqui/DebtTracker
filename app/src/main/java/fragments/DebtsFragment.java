@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -69,14 +70,19 @@ public class DebtsFragment extends Fragment {
             setHasOptionsMenu(true);
 
             fAuth=FirebaseAuth.getInstance();
-            mDatabase = FirebaseDatabase.getInstance().getReference().child("Debts").child(fAuth.getCurrentUser().getUid());
+            String uid = fAuth.getCurrentUser().getUid();
+            Log.d("USER ID", uid);
+            mDatabase = FirebaseDatabase.getInstance().getReference().child("Debts").child(uid);
             mDatabase.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     // Retrieving debts from Firebase to display in RecycleView
                     for(DataSnapshot debtsSnapshot : dataSnapshot.getChildren()){
-                        Debts debt = debtsSnapshot.getValue(Debts.class);
-                        debtsList.add(debt);
+                        for (DataSnapshot ds : debtsSnapshot.getChildren()) {
+                            Debts debt = ds.getValue(Debts.class);
+                            debtsList.add(debt);
+                            Log.d("TAG", debt.toString());
+                        }
                     }
 
 

@@ -174,7 +174,6 @@ public class NewDebtFragment extends Fragment {
 
             final Map debtMap = new HashMap();
             debtMap.put("debt", debt);
-            debtMap.put("timestamp", ServerValue.TIMESTAMP);
 
             Thread mainThread = new Thread(new Runnable() {
                 @Override
