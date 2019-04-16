@@ -67,21 +67,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
+
             <Spinner
                 android:id="@+id/categorySpinner"
-                android:layout_width="120dp"
+                android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="50dp"
-                android:tag="Type of Debt"
-                android:clipChildren="true"/>
+                android:clipChildren="true"
+                android:tag="Type of Debt" />
 
             <TextView
                 android:id="@+id/expiry_date"
-                android:layout_width="140dp"
+                android:layout_width="120dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="30dp"
-                android:textColor="@color/design_default_color_primary_dark"
-                />
+                android:textColor="@color/design_default_color_primary_dark" />
         </LinearLayout>
 
             <Button
@@ -90,8 +90,8 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="200dp"
                 android:background="@color/design_default_color_primary_dark"
-                android:textColor="@android:color/holo_orange_light"
-                android:text="* Choose Due Date" />
+                android:text="* Choose Due Date"
+                android:textColor="@android:color/holo_orange_light" />
 
 
 

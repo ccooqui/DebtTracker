@@ -146,7 +146,6 @@ public class NewDebtFragment extends Fragment {
 
             Debts d = new Debts(dName, dPhone, dBalance, dInitialBalance, dDueDate, categ);
             createDebt(d);
-            Toast.makeText(getContext(), "Debt added to your list", Toast.LENGTH_SHORT).show();
             clearEntries();
 
             final String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
@@ -182,7 +181,7 @@ public class NewDebtFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<Void> task){
                             if(task.isSuccessful()) {
-                                Toast.makeText(getContext(), "Note added to db", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Debt added to your list", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getContext(), "ERROR:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
@@ -202,14 +201,14 @@ public class NewDebtFragment extends Fragment {
         // They entered for a coupon. If they say yes, all the entries are reset. If they say no,
         // the dialog disappears and their entries remain the same.
         AlertDialog.Builder clearEntries = new AlertDialog.Builder(mContext);
-        clearEntries.setMessage("Clear all entries?");
+        clearEntries.setMessage("Clear all fields?");
         clearEntries.setCancelable(true);
 
         clearEntries.setPositiveButton(
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(mContext, "Clearing Entries", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Clearing fields", Toast.LENGTH_SHORT).show();
                         etDebtorName = v.findViewById(R.id.etDebtorName);
                         etPhone = v.findViewById(R.id.etPhone);
                         etBalance = v.findViewById(R.id.etBalance);
