@@ -80,7 +80,9 @@ public class DebtsFragment extends Fragment {
                     for(DataSnapshot debtsSnapshot : dataSnapshot.getChildren()){
                         for (DataSnapshot ds : debtsSnapshot.getChildren()) {
                             Debts debt = ds.getValue(Debts.class);
-                            debtsList.add(debt);
+                            if (debt.getIsCreditorOrDebtor() == true) {
+                                debtsList.add(debt);
+                            }
                             Log.d("TAG", debt.toString());
                         }
                     }
