@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DebtTracker</string>
+    <string name="app_name">Recoup</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -17,8 +17,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!--Spinner for coupon categories-->
-
+    <!--Spinner for debt category-->
     <string-array name="category_types">
         <item>Debt</item>
         <item>Credit</item>

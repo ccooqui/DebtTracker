@@ -3,12 +3,14 @@
     <item
     android:id="@+id/nav_debts"
     android:title="Debts"
+        android:icon="@drawable/ic_action_debt"
         android:titleCondensed="Debts"
         />
 
     <item
         android:id="@+id/nav_credits"
         android:title="Credits"
+        android:icon="@drawable/ic_action_credit"
         android:titleCondensed="Credits"/>
 
     <item

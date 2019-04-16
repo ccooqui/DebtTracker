@@ -1,30 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/dCard"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/id_Card"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="10dp"
     android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_width="175dp"
+    android:layout_height="150dp"
+    android:layout_margin="5dp"
+    cardview:cardCornerRadius="4dp"
+    android:focusable="true">
 
-    >
-    <android.support.v7.widget.LinearLayoutCompat
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tvDebtorName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvBalance"
-            android:layout_width="wrap_content"
+            android:textColor="@android:color/holo_orange_dark"
+            android:layout_margin="5dp"
+            android:textSize="40dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="Balance" />
 
-    </android.support.v7.widget.LinearLayoutCompat>
+        <TextView
+            android:id="@+id/tvDebtorName"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:layout_margin="5dp"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvBalance"
+            android:text="Debtor Name" />
+
+        <TextView
+            android:id="@+id/tvDueDate"
+            android:textColor="@android:color/holo_orange_dark"
+            android:layout_margin="5dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvDebtorName"
+            android:text="Due Date" />
+
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>

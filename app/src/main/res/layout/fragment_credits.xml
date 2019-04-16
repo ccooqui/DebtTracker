@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fragments.CreditsFragment">
+    tools:context="fragments.CreditsFragment"
+    android:padding="8dp">
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/credits_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
 
-</FrameLayout>
+</LinearLayout>

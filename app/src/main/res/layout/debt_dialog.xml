@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="300dp"
+    android:maxHeight="600dp"
+    android:maxWidth="600dp"
+    android:layout_gravity="center">
+
+
+    <LinearLayout
+        android:id="@+id/ll_dialog_call_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp">
+
+        <Button
+            android:id="@+id/call_dialog_btn"
+            android:drawablePadding="20dp"
+            android:textAlignment="textStart"
+            android:padding="10dp"
+            android:drawableLeft="@drawable/ic_action_call"
+            android:layout_gravity="start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/design_default_color_primary_dark"
+            android:text="Mobile Call"
+            android:textColor="@android:color/holo_orange_dark"/>
+
+        <Button
+            android:id="@+id/edit_btn"
+            android:drawablePadding="20dp"
+            android:textAlignment="textStart"
+            android:padding="10dp"
+            android:drawableLeft="@drawable/ic_action_edit"
+            android:layout_gravity="start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/design_default_color_primary_dark"
+            android:text="Edit Balance"
+            android:textColor="@android:color/holo_orange_dark"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
