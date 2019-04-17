@@ -107,6 +107,8 @@ public class ForgetAndChangePasswordActivity extends AppCompatActivity {
                             @Override                            public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(ForgetAndChangePasswordActivity.this, "Password is updated!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(ForgetAndChangePasswordActivity.this, DashboardActivity.class);
+                                    startActivity(intent);
                                 } else {
                                     Toast.makeText(ForgetAndChangePasswordActivity.this, "Failed to update password!", Toast.LENGTH_SHORT).show();
                                 }
@@ -125,6 +127,8 @@ public class ForgetAndChangePasswordActivity extends AppCompatActivity {
                             @Override                            public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(ForgetAndChangePasswordActivity.this, "Email address is updated.", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(ForgetAndChangePasswordActivity.this, DashboardActivity.class);
+                                    startActivity(intent);
                                 } else {
                                     Toast.makeText(ForgetAndChangePasswordActivity.this, "Failed to update email!", Toast.LENGTH_LONG).show();
                                 }
@@ -140,6 +144,8 @@ public class ForgetAndChangePasswordActivity extends AppCompatActivity {
                             @Override                            public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(ForgetAndChangePasswordActivity.this, "Your profile is deleted:( Create a account now!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(ForgetAndChangePasswordActivity.this, WelcomeScreen.class);
+                                    startActivity(intent);
                                 } else {
                                     Toast.makeText(ForgetAndChangePasswordActivity.this, "Failed to delete your account!", Toast.LENGTH_SHORT).show();
                                 }

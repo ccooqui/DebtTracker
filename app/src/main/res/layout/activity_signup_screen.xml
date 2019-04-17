@@ -22,6 +22,7 @@
                 android:layout_marginLeft="30dp"
                 android:ems="10"
                 android:hint="First Name"
+                android:textColor="@android:color/holo_orange_light"
                 android:backgroundTint="@android:color/holo_orange_light"
                 android:textColorHint="@android:color/holo_orange_light"
                 android:inputType="textPersonName" />
@@ -33,6 +34,7 @@
                 android:layout_marginLeft="20dp"
                 android:ems="10"
                 android:hint="Last Name"
+                android:textColor="@android:color/holo_orange_light"
                 android:backgroundTint="@android:color/holo_orange_light"
                 android:textColorHint="@android:color/holo_orange_light"
                 android:inputType="textPersonName" />
@@ -51,6 +53,7 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:hint="Username/Email"
+                android:textColor="@android:color/holo_orange_light"
                 android:backgroundTint="@android:color/holo_orange_light"
                 android:textColorHint="@android:color/holo_orange_light"
                 android:layout_marginLeft="30dp"
@@ -62,6 +65,7 @@
                 android:layout_height="50dp"
                 android:ems="10"
                 android:hint="Password"
+                android:textColor="@android:color/holo_orange_light"
                 android:textColorHint="@android:color/holo_orange_light"
                 android:backgroundTint="@android:color/holo_orange_light"
                 android:inputType="textPassword"
@@ -70,13 +74,15 @@
 
     <Button
         android:id="@+id/createAcctBtn"
-        android:background="@color/design_default_color_primary"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:textStyle="bold"
+        android:layout_marginTop="60dp"
+        android:background="@android:color/white"
         android:text="Create Account"
-        android:textColor="@android:color/holo_orange_light"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"/>
+        android:textColor="@android:color/holo_orange_dark"/>
 
 
 </LinearLayout>
