@@ -173,6 +173,8 @@ public class NewDebtFragment extends Fragment {
     private void createDebt(Debts debt) {
         if (fAuth.getCurrentUser() != null) {
             final DatabaseReference newDebtRef = fDebtsDatabase.push();
+            String debtId = newDebtRef.getKey();
+            debt.setDebtID(debtId);
 
             final Map debtMap = new HashMap();
             debtMap.put("debt", debt);

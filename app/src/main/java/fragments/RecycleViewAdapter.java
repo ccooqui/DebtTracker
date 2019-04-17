@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,6 +40,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     // Data
     private List<Debts> mData;
     private FirebaseUser loggedInUserFB;
+    private DatabaseReference fDebtsDatabase;
 
     // Dialogs
     private Dialog debtDialog;
@@ -157,7 +160,12 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                 deleteButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        String Uid = loggedInUserFB.getUid();
+                        Debts current_debt;
+                        current_debt = mData.get(viewHolder.getAdapterPosition());
+                        fDebtsDatabase = FirebaseDatabase.getInstance().getReference().child("Debts").child(Uid).child(current_debt.getDebtID());
+                        fDebtsDatabase.removeValue();
+                        mData.remove(viewHolder.getAdapterPosition());
                     }
                 });
 
