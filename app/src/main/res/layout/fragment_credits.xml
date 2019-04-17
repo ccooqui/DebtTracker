@@ -1,22 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context="fragments.CreditsFragment"
 android:orientation="vertical">
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Credits"
-    android:textSize="30sp"
-    android:textStyle="bold"
-    android:textColor="@color/colorPrimaryDark"/>
 
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/credits_recycler_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-</android.support.v7.widget.RecyclerView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Credits"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/credits_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="200dp"
+            android:clipChildren="true"
+            android:tag="Sort by" />
+
+    </LinearLayout>
+
+</FrameLayout>
