@@ -82,6 +82,7 @@ public class DebtsFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     // Retrieving debts from Firebase to display in RecycleView
+                    debtsList.clear();
                     for(DataSnapshot debtsSnapshot : dataSnapshot.getChildren()){
                         for (DataSnapshot ds : debtsSnapshot.getChildren()) {
                             Debts debt = ds.getValue(Debts.class);
