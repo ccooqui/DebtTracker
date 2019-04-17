@@ -39,5 +39,6 @@ dependencies {
     implementation files('libs/activation.jar')
     implementation files('libs/additional.jar')
     implementation files('libs/mail.jar')
+    implementation 'com.github.lzyzsd:circleprogress:+'
 
 }

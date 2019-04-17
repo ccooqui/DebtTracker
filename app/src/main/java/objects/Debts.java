@@ -1,5 +1,7 @@
 package objects;
 
+import android.util.Log;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -18,17 +20,19 @@ public class Debts {
     private String dueDate;
     private String finalDueDate;
     private String dateEntered;
+    private String debtNotes;
     private Boolean isCreditorOrDebtor;
 
     public Debts(){}
 
-    public Debts(String DebtorName, String Phone, String Balance, String InitialBalance, String FinalDueDate, Boolean isCreditorOrDebtor) {
+    public Debts(String DebtorName, String Phone, String Balance, String InitialBalance, String FinalDueDate, Boolean isCreditorOrDebtor, String debtNotes) {
         this.debtorName = DebtorName;
         this.phone = Phone;
         this.balance = Balance;
         this.initialBalance = InitialBalance;
         this.finalDueDate = FinalDueDate;
         this.isCreditorOrDebtor = isCreditorOrDebtor;
+        this.debtNotes = debtNotes;
 
         //generate the date of when the debt was created
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -66,6 +70,8 @@ public class Debts {
 
     public Boolean getIsCreditorOrDebtor(){ return isCreditorOrDebtor; }
 
+    public String getDebtNotes() { return debtNotes; }
+
 
     //Setter Functions
 
@@ -102,12 +108,19 @@ public class Debts {
 
     public void setIsCreditorOrDebtor(Boolean IsCreditorOrDebtor) { isCreditorOrDebtor = IsCreditorOrDebtor;    }
 
+    public void setDebtNotes(String debtNotes) { this.debtNotes = debtNotes; }
+
     public String toString(){
         return "" + debtorName + "";
     }
 
     public Float calculateBalance() {
         return Float.parseFloat(this.initialBalance) - Float.parseFloat(this.balance);
+    }
+
+    public int calculateBalancePercent() {
+
+        return (int)((Float.parseFloat(this.balance)/Float.parseFloat(this.initialBalance))*100);
     }
 
 }

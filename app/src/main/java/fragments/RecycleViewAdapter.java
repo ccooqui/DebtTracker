@@ -19,9 +19,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -118,7 +120,12 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
             myViewHolder.tv_name.setText(mData.get(i).getDebtorName());
             myViewHolder.tv_balance.setText(mData.get(i).getBalance());
+            myViewHolder.tv_initialBalance.setText(mData.get(i).getInitialBalance());
             myViewHolder.tv_dueDate.setText(mData.get(i).getFinalDueDate());
+            myViewHolder.tv_dateCreated.setText(mData.get(i).getDateEntered());
+            myViewHolder.tv_debtNotes.setText(mData.get(i).getDebtNotes());
+
+            myViewHolder.debt_progress.setProgress(mData.get(i).calculateBalancePercent());
 
 
     }
@@ -133,7 +140,11 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         // Gets the id names of all components to the cardView items
         private TextView tv_name;
         private TextView tv_balance;
+        private TextView tv_initialBalance;
         private TextView tv_dueDate;
+        private TextView tv_dateCreated;
+        private TextView tv_debtNotes;
+        private DonutProgress debt_progress;
 
         private CardView cardView;
 
@@ -142,7 +153,11 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
             tv_name = itemView.findViewById(R.id.tvDebtorName);
             tv_balance = itemView.findViewById(R.id.tvBalance);
+            tv_initialBalance = itemView.findViewById(R.id.tvInitialBalance);
             tv_dueDate =  itemView.findViewById(R.id.tvDueDate);
+            tv_dateCreated =  itemView.findViewById(R.id.tvDateCreated);
+            tv_debtNotes =  itemView.findViewById(R.id.tvDebtNotes);
+            debt_progress = itemView.findViewById(R.id.debt_progress);
             cardView = itemView.findViewById(R.id.id_Card);
         }
     }

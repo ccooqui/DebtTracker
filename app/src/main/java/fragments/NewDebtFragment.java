@@ -46,7 +46,7 @@ public class NewDebtFragment extends Fragment {
 
     //UI Elements
     private Button btnCreate, btnDueDate;
-    private EditText etDebtorName, etPhone, etInitialBalance, etBalance;
+    private EditText etDebtorName, etPhone, etInitialBalance, etBalance, etDebtNotes;
     private TextView debtDueDate;
     String selectedDate;
     DatePickerDialog datePickerDialog;
@@ -85,6 +85,7 @@ public class NewDebtFragment extends Fragment {
         etPhone = v.findViewById(R.id.etPhone);
         etBalance = v.findViewById(R.id.etBalance);
         etInitialBalance = v.findViewById(R.id.etInitialBalance);
+        etDebtNotes = v.findViewById(R.id.etDebtNotes);
 
         btnDueDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +127,7 @@ public class NewDebtFragment extends Fragment {
         etPhone = v.findViewById(R.id.etPhone);
         etBalance = v.findViewById(R.id.etBalance);
         etInitialBalance = v.findViewById(R.id.etInitialBalance);
+        etDebtNotes = v.findViewById(R.id.etDebtNotes);
         debtDueDate = v.findViewById(R.id.expiry_date);
         Spinner categoryType = v.findViewById(R.id.categorySpinner);
         final String dDueDate = selectedDate;
@@ -134,6 +136,7 @@ public class NewDebtFragment extends Fragment {
         final String dPhone = etPhone.getText().toString();
         final String dBalance = etBalance.getText().toString();
         final String dInitialBalance = etInitialBalance.getText().toString();
+        final String dDebtNotes = etDebtNotes.getText().toString();
         final String dCategory = categoryType.getSelectedItem().toString();
         Boolean categ;
         if(dCategory.equals("Debt") == true) categ = true;
@@ -144,7 +147,7 @@ public class NewDebtFragment extends Fragment {
             Toast.makeText(getContext(), "Fill out all required fields and choose a Due Date before adding the debt to the list", Toast.LENGTH_LONG).show();
         } else {
 
-            Debts d = new Debts(dName, dPhone, dBalance, dInitialBalance, dDueDate, categ);
+            Debts d = new Debts(dName, dPhone, dBalance, dInitialBalance, dDueDate, categ, dDebtNotes);
             createDebt(d);
             clearEntries();
 
@@ -212,11 +215,14 @@ public class NewDebtFragment extends Fragment {
                         etDebtorName = v.findViewById(R.id.etDebtorName);
                         etPhone = v.findViewById(R.id.etPhone);
                         etBalance = v.findViewById(R.id.etBalance);
+                        etDebtNotes = v.findViewById(R.id.etDebtNotes);
                         etInitialBalance = v.findViewById(R.id.etInitialBalance);
                         debtDueDate = v.findViewById(R.id.expiry_date);
                         etDebtorName.setText(null);
                         etPhone.setText(null);
                         etBalance.setText(null);
+                        etDebtNotes.setText(null);
+
                         etInitialBalance.setText(null);
                         debtDueDate.setText(null);
                     }
