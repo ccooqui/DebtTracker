@@ -72,46 +72,6 @@ public class DebtsFragment extends Fragment {
 
             setHasOptionsMenu(true);
 
-            // Spinner drop down elements
-            List<String> choices = new ArrayList<String>();
-            choices.add("None");
-            choices.add("Name");
-            choices.add("Due Date");
-            choices.add("Amount Owed");
-
-            Spinner spinner = v.findViewById(R.id.spinner);
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
-                    android.R.layout.simple_list_item_1, choices);
-            spinner.setAdapter(adapter);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(adapter);
-
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                    switch (position) {
-                        case 0:
-                            Toast.makeText(parent.getContext(), "Unsorted", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 1:
-                            Toast.makeText(parent.getContext(), "Sorted by Name", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 2:
-                            Toast.makeText(parent.getContext(), "Sorted by Due Date", Toast.LENGTH_SHORT).show();
-                            break;
-                        case 3:
-                            Toast.makeText(parent.getContext(), "Sorted by Amount Owed", Toast.LENGTH_SHORT).show();
-                            break;
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    // Required empty constructor
-                }
-            });
-
             fAuth=FirebaseAuth.getInstance();
             String uid = fAuth.getCurrentUser().getUid();
             Log.d("USER ID", uid);
@@ -135,12 +95,55 @@ public class DebtsFragment extends Fragment {
                     if(debtsList.size() == 0){
                         Toast.makeText(getContext(), "No debts in the list. Go to the add debts tab to add some debts to your list!", Toast.LENGTH_LONG).show();
                     } else {
-                        getRecycleView();
+                        getRecycleView(0);
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) { }
+            });
+
+            // Spinner drop down elements
+            List<String> choices = new ArrayList<String>();
+            choices.add("None");
+            choices.add("Name");
+            choices.add("Due Date");
+            choices.add("Amount Owed");
+
+            Spinner spinner = v.findViewById(R.id.spinner);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
+                    android.R.layout.simple_list_item_1, choices);
+            spinner.setAdapter(adapter);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                    switch (position) {
+                        case 0:
+                            getRecycleView(0);
+                            break;
+                        case 1:
+                            Toast.makeText(parent.getContext(), "Sorted by Name", Toast.LENGTH_SHORT).show();
+                            getRecycleView(1);
+                            break;
+                        case 2:
+                            Toast.makeText(parent.getContext(), "Sorted by Due Date", Toast.LENGTH_SHORT).show();
+                            getRecycleView(2);
+                            break;
+                        case 3:
+                            Toast.makeText(parent.getContext(), "Sorted by Amount Owed", Toast.LENGTH_SHORT).show();
+                            getRecycleView(3);
+                            break;
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    // Required empty constructor
+                }
             });
         }
 
@@ -148,12 +151,12 @@ public class DebtsFragment extends Fragment {
         return v;
     }
 
-    public void getRecycleView(){
+    public void getRecycleView(int spinner){
         // Creating a view of the fragment_debts .xml layout.
         // Generates the icons and information taken from the debts list and displays each item
         // in 2 columns and then returns the view
         RecyclerView myRecyclerView = v.findViewById(R.id.debts_recycler_view);
-        recycleViewAdapter = new RecycleViewAdapter(getContext(), debtsList);
+        recycleViewAdapter = new RecycleViewAdapter(getContext(), debtsList, spinner);
         myRecyclerView.setAdapter(recycleViewAdapter);
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);
         myRecyclerView.setLayoutManager(mLayoutManager);

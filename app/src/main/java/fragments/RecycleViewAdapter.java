@@ -4,22 +4,14 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,13 +19,11 @@ import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import er.debttracker.R;
@@ -58,9 +48,59 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
     public RecycleViewAdapter() { }
 
-    public RecycleViewAdapter(Context mContext, List<Debts> mData) {
+    public RecycleViewAdapter(Context mContext, List<Debts> mData, int spinner) {
         this.mContext = mContext;
         this.mData = mData;
+
+        if (spinner == 0) {
+            // do nothing
+        }
+        else if (spinner == 1) { // sort by name
+            Collections.sort(mData, new Comparator<Debts>() {
+                @Override
+                public int compare(Debts example1, Debts example2) {
+
+                    //For Ascending Order
+                    return example1.getDebtorName().compareTo(example2.getDebtorName());
+                }
+            });
+        }
+        else if (spinner == 2) { // sort by Due Date
+
+            Collections.sort(mData, new Comparator<Debts>() {
+                @Override
+                public int compare(Debts example1, Debts example2) {
+
+                    SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
+                    String dateString1 = example1.getFinalDueDate();
+                    String dateString2 = example2.getFinalDueDate();
+
+                    try {
+                        Date date1 = formatter.parse(dateString1);
+                        Date date2 = formatter.parse(dateString2);
+
+                        return (date1).compareTo(date2);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    //For Ascending Order
+                    //return (date1).compareTo(date2);
+
+                    return example1.getFinalDueDate().compareTo(example2.getFinalDueDate());
+                }
+            });
+        }
+        else if (spinner == 3) { // sort by Amount Owed
+            Collections.sort(mData, new Comparator<Debts>() {
+                @Override
+                public int compare(Debts example1, Debts example2) {
+
+                    //For Ascending Order
+                    return (int) (example1.calculateBalance() - example2.calculateBalance());
+                }
+            });
+        }
     }
 
     @NonNull
