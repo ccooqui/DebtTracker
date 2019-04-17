@@ -22,9 +22,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".ForgetAndChangePasswordActivity" />
-        <activity android:name=".SignupScreen" />
-        <activity android:name=".LoginScreen" />
-        <activity android:name=".WelcomeScreen">
+        <activity android:name=".SignupScreen"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".LoginScreen"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".WelcomeScreen"
+                  android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

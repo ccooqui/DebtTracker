@@ -4,17 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fragments.DebtsFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Debts"
+            android:layout_marginLeft="10dp"
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="@color/colorPrimaryDark"/>
@@ -30,14 +33,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal">
 
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="200dp"
+            android:layout_marginLeft="215dp"
             android:clipChildren="true"
             android:tag="Sort by" />
 
