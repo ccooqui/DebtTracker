@@ -1,13 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fragments.SettingsFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="275dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/recoup_logo" />
+
+        <Button
+            android:id="@+id/changeEmail"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/design_default_color_primary_dark"
+            android:text="Change Email"
+            android:textColor="@android:color/holo_orange_light" />
+
+        <Button
+            android:id="@+id/changePassword"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="130dp"
+            android:background="@color/design_default_color_primary_dark"
+            android:textColor="@android:color/holo_orange_light"
+            android:text="Change Password" />
+
+        <Button
+            android:id="@+id/deleteAccount"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="130dp"
+            android:background="@color/design_default_color_primary_dark"
+            android:textColor="@android:color/holo_orange_light"
+            android:text="Delete Account" />
+
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="130dp"
+            android:background="@color/design_default_color_primary_dark"
+            android:textColor="@android:color/holo_orange_light"
+            android:text="Logout" />
+
+    </LinearLayout>
 
 </FrameLayout>
