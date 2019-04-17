@@ -41,6 +41,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
     // Dialogs
     private Dialog debtDialog;
+    private Dialog editDialog;
 
     // Accounts
     private Users loggedInUser;
@@ -139,11 +140,16 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                     }
                 });
 
-                Button editButton = debtDialog.findViewById(R.id.edit_btn);
+                final Button editButton = debtDialog.findViewById(R.id.edit_btn);
                 editButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        debtDialog.hide();
+                        editDialog = new Dialog(mContext);
+                        editDialog.setContentView(R.layout.edit_dialog);
+                        editDialog.setTitle("Add Payment");
+                        editDialog.show();
+                        mData.get(viewHolder.getAdapterPosition()).getPhone();
                     }
                 });
 

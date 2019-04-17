@@ -35,7 +35,7 @@ public class Debts {
         this.debtNotes = debtNotes;
 
         //generate the date of when the debt was created
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         String date = df.format(Calendar.getInstance().getTime());
         this.dateEntered = date;
     }
