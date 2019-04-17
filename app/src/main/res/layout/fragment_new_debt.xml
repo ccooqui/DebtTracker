@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:hint="* Debtor Name"
+                android:textColor="@color/design_default_color_primary_dark"
                 android:textColorHint="@color/design_default_color_primary_dark"
                 android:padding="10dp"/>
 
@@ -37,6 +38,7 @@
                 android:layout_marginLeft="50dp"
                 android:ems="10"
                 android:hint="* Phone Number"
+                android:textColor="@color/design_default_color_primary_dark"
                 android:textColorHint="@color/design_default_color_primary_dark"
                 android:inputType="phone" />
 
@@ -48,6 +50,7 @@
                 android:layout_marginLeft="50dp"
                 android:ems="10"
                 android:hint="* Current Balance"
+                android:textColor="@color/design_default_color_primary_dark"
                 android:textColorHint="@color/design_default_color_primary_dark"
                 android:inputType="numberDecimal" />
 
@@ -59,16 +62,18 @@
                 android:layout_marginLeft="50dp"
                 android:ems="10"
                 android:hint="* Initial Balance"
+                android:textColor="@color/design_default_color_primary_dark"
                 android:textColorHint="@color/design_default_color_primary_dark"
                 android:inputType="numberDecimal" />
 
             <EditText
                 android:id="@+id/etDebtNotes"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:ems="10"
                 android:hint="Enter details of debt"
                 android:layout_marginLeft="50dp"
+                android:textColor="@color/design_default_color_primary_dark"
                 android:textColorHint="@color/design_default_color_primary_dark"
                 android:inputType="textMultiLine" />
 
@@ -84,6 +89,7 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="50dp"
                 android:clipChildren="true"
+                android:textColor="@color/design_default_color_primary_dark"
                 android:tag="Type of Debt" />
 
             <TextView

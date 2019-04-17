@@ -49,6 +49,7 @@ public class DebtsFragment extends Fragment {
     private static List<Debts> debtsList = new ArrayList<>();
     private RecycleViewAdapter recycleViewAdapter;
     View v;
+    private Context mContext;
 
     // Database retrieval
     private FirebaseAuth fAuth;
@@ -69,6 +70,7 @@ public class DebtsFragment extends Fragment {
 
         if(v == null) {
             v = inflater.inflate(R.layout.fragment_debts, container, false);
+            mContext = v.getContext();
 
             setHasOptionsMenu(true);
 
@@ -93,7 +95,7 @@ public class DebtsFragment extends Fragment {
 
                     // Display nothing
                     if(debtsList.size() == 0){
-                        Toast.makeText(getContext(), "No debts in the list. Go to the add debts tab to add some debts to your list!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(mContext, "No debts in the list. Go to the add debts tab to add some debts to your list!", Toast.LENGTH_LONG).show();
                     } else {
                         getRecycleView(0);
                     }
@@ -111,7 +113,7 @@ public class DebtsFragment extends Fragment {
             choices.add("Amount Owed");
 
             Spinner spinner = v.findViewById(R.id.spinner);
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext,
                     android.R.layout.simple_list_item_1, choices);
             spinner.setAdapter(adapter);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

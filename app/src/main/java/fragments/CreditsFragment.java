@@ -48,6 +48,7 @@ public class CreditsFragment extends Fragment {
     @SuppressLint("StaticFieldLeak")
     private static List<Debts> creditsList = new ArrayList<>();
     private RecycleViewAdapter recycleViewAdapter;
+    private Context mContext;
     View v;
 
     // Database retrieval
@@ -69,6 +70,7 @@ public class CreditsFragment extends Fragment {
 
         if(v == null) {
             v = inflater.inflate(R.layout.fragment_credits, container, false);
+            mContext= v.getContext();
 
             setHasOptionsMenu(true);
 
@@ -93,7 +95,7 @@ public class CreditsFragment extends Fragment {
 
                     // Display nothing
                     if(creditsList.size() == 0){
-                        Toast.makeText(getContext(), "No debts in the list. Go to the add debts tab to add some debts to your list!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(mContext, "No debts in the list. Go to the add debts tab to add some debts to your list!", Toast.LENGTH_LONG).show();
                     } else {
                         getRecycleView(0);
                     }
@@ -111,7 +113,7 @@ public class CreditsFragment extends Fragment {
             choices.add("Amount Owed");
 
             final Spinner spinner = v.findViewById(R.id.spinner);
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext,
                     android.R.layout.simple_list_item_1, choices);
             spinner.setAdapter(adapter);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

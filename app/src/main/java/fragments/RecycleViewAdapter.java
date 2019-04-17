@@ -153,6 +153,14 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                     }
                 });
 
+                Button deleteButton = debtDialog.findViewById(R.id.delete_btn);
+                deleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+
             }
         });
         return viewHolder;

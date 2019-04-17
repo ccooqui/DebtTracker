@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginRight="50dp"
-    android:layout_marginLeft="50dp"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="135dp"
     android:layout_gravity="center">
 
 
@@ -36,17 +35,28 @@
             android:background="@color/colorWhite"
             android:drawableLeft="@drawable/ic_action_call"
             android:text="Mobile Call"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@android:color/holo_orange_light"/>
 
         <Button
             android:id="@+id/edit_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/colorWhite"
-            android:drawableLeft="@drawable/ic_action_edit"
-            android:text="Edit Balance"
-            android:textColor="@color/colorPrimaryDark" />
+            android:background="@color/design_default_color_primary_dark"
+            android:text="Edit Debt"
+            android:textColor="@android:color/holo_orange_light"/>
+
+        <Button
+            android:id="@+id/delete_btn"
+            android:drawablePadding="20dp"
+            android:textAlignment="textStart"
+            android:padding="10dp"
+            android:drawableLeft="@drawable/ic_action_delete"
+            android:layout_gravity="start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/design_default_color_primary_dark"
+            android:text="Delete Debt"
+            android:textColor="@android:color/holo_orange_light"/>
 
     </LinearLayout>
 
