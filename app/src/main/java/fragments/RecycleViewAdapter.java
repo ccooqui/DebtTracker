@@ -55,7 +55,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         if (spinner == 0) {
             // do nothing
         }
-        else if (spinner == 1) { // sort by name
+        else if (spinner == 1) { // sort by Name
             Collections.sort(mData, new Comparator<Debts>() {
                 @Override
                 public int compare(Debts example1, Debts example2) {
@@ -71,7 +71,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                 @Override
                 public int compare(Debts example1, Debts example2) {
 
-                    SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
+                    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
                     String dateString1 = example1.getFinalDueDate();
                     String dateString2 = example2.getFinalDueDate();
 
@@ -83,9 +83,6 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-
-                    //For Ascending Order
-                    //return (date1).compareTo(date2);
 
                     return example1.getFinalDueDate().compareTo(example2.getFinalDueDate());
                 }
