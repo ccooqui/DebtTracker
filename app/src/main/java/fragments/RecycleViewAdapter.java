@@ -170,6 +170,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                                 fDebtsDatabase = FirebaseDatabase.getInstance().getReference().child("Debts").child(Uid).child(current_debt.getDebtID()).child("debt");
                                 Float newBalance = parseFloat(current_debt.getBalance()) + parseFloat(payment.getText().toString());
                                 fDebtsDatabase.child("balance").setValue(newBalance.toString());
+                                paymentDialog.dismiss();
                                 Toast.makeText(mContext, "Payment Made", Toast.LENGTH_SHORT).show();
                             }
                         });
