@@ -8,8 +8,18 @@
     android:orientation="vertical"
     tools:context=".SignupScreen">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:textSize="28dp"
+        android:layout_marginLeft="35dp"
+        android:textColor="@color/colorWhite"
+        android:text="Sign Up" />
+
     <LinearLayout
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
@@ -76,10 +86,10 @@
         android:id="@+id/createAcctBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
         android:textStyle="bold"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:background="@android:color/white"
         android:text="Create Account"
         android:textColor="@android:color/holo_orange_dark"/>

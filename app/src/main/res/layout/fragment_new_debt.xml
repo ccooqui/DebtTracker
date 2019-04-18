@@ -12,21 +12,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="40dp">
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="275dp"
-                android:layout_height="180dp"
+                android:layout_height="130dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/recoup_logo" />
 
             <EditText
                 android:id="@+id/etDebtorName"
                 android:layout_marginTop="0dp"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:hint="* Debtor Name"
                 android:textColor="@color/design_default_color_primary_dark"
                 android:textColorHint="@color/design_default_color_primary_dark"
@@ -36,9 +38,10 @@
             <EditText
                 android:id="@+id/etPhone"
                 android:layout_marginTop="10dp"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:ems="10"
                 android:hint="* Phone Number"
                 android:textColor="@color/design_default_color_primary_dark"
@@ -48,11 +51,12 @@
             <EditText
                 android:id="@+id/etBalance"
                 android:layout_marginTop="10dp"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:ems="10"
-                android:hint="* Current Balance"
+                android:hint="* Amount Currently Paid"
                 android:textColor="@color/design_default_color_primary_dark"
                 android:textColorHint="@color/design_default_color_primary_dark"
                 android:inputType="numberDecimal" />
@@ -60,44 +64,48 @@
             <EditText
                 android:id="@+id/etInitialBalance"
                 android:layout_marginTop="10dp"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:ems="10"
-                android:hint="* Initial Balance"
+                android:hint="* Total Amount Owed"
                 android:textColor="@color/design_default_color_primary_dark"
                 android:textColorHint="@color/design_default_color_primary_dark"
                 android:inputType="numberDecimal" />
 
             <EditText
                 android:id="@+id/etDebtNotes"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="80dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:ems="10"
                 android:hint="Enter details of debt"
-                android:layout_marginLeft="50dp"
+                android:inputType="textMultiLine"
                 android:textColor="@color/design_default_color_primary_dark"
-                android:textColorHint="@color/design_default_color_primary_dark"
-                android:inputType="textMultiLine" />
+                android:textColorHint="@color/design_default_color_primary_dark" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingBottom="10dp">
 
                 <Spinner
                     android:id="@+id/categorySpinner"
-                    android:layout_width="150dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
                     android:clipChildren="true"
-                    android:textColor="@color/design_default_color_primary_dark"
-                    android:tag="Type of Debt" />
+                    android:tag="Type of Debt"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:id="@+id/expiry_date"
-                    android:layout_width="120dp"
+                    android:layout_width="1dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="30dp"
                     android:textColor="@color/design_default_color_primary_dark" />
@@ -105,23 +113,25 @@
 
             <Button
                 android:id="@+id/btnDate"
-                android:layout_width="140dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginLeft="200dp"
-                android:background="@color/design_default_color_primary_dark"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:background="@color/colorAccent"
                 android:text="* Choose Due Date"
-                android:textColor="@android:color/holo_orange_light" />
+                android:textColor="@color/colorWhite" />
 
 
             <Button
                 android:id="@+id/btnCreate"
-                android:layout_width="140dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginLeft="130dp"
-                android:background="@color/design_default_color_primary_dark"
-                android:textColor="@android:color/holo_orange_light"
-                android:text="Add Debt to List" />
+                android:background="@color/colorPrimaryDark"
+                android:text="Add Debt to List"
+                android:textColor="@color/colorAccent" />
 
         </LinearLayout>
     </ScrollView>
