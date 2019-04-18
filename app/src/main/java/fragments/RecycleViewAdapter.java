@@ -145,8 +145,8 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                     }
                 });
 
-                final Button editButton = debtDialog.findViewById(R.id.call_dialog_payment);
-                editButton.setOnClickListener(new View.OnClickListener() {
+                final Button paymentButton = debtDialog.findViewById(R.id.call_dialog_payment);
+                paymentButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(final View v) {
                         debtDialog.hide();
@@ -170,6 +170,13 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                                 fDebtsDatabase.child("balance").setValue( newBalance.toString());
                             }
                         });
+                    }
+                });
+                Button editButton = debtDialog.findViewById(R.id.edit_btn);
+                editButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
                     }
                 });
 

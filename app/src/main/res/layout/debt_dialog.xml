@@ -17,53 +17,53 @@
             android:id="@+id/call_dialog_payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/design_default_color_primary_dark"
+            android:background="@color/colorWhite"
             android:drawablePadding="20dp"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:padding="10dp"
-            android:drawableLeft="@drawable/ic_action_payment"
+            android:drawableLeft="@drawable/ic_action_pay"
             android:layout_gravity="start"
             android:text="Add Payment"
-            android:textColor="@android:color/holo_orange_light" />
+            android:textColor="@color/colorPrimary" />
 
         <Button
             android:id="@+id/call_dialog_btn"
             android:drawablePadding="20dp"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:padding="10dp"
-            android:drawableLeft="@drawable/ic_action_call"
+            android:drawableLeft="@drawable/ic_action_calling"
             android:layout_gravity="start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/design_default_color_primary_dark"
+            android:background="@color/colorWhite"
             android:text="Mobile Call"
-            android:textColor="@android:color/holo_orange_light"/>
+            android:textColor="@color/colorPrimary"/>
 
         <Button
             android:id="@+id/edit_btn"
             android:drawablePadding="20dp"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:padding="10dp"
-            android:drawableLeft="@drawable/ic_action_edit"
+            android:drawableLeft="@drawable/ic_action_edits"
             android:layout_gravity="start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/design_default_color_primary_dark"
+            android:background="@color/colorWhite"
             android:text="Edit Debt"
-            android:textColor="@android:color/holo_orange_light"/>
+            android:textColor="@color/colorPrimary"/>
 
         <Button
             android:id="@+id/delete_btn"
             android:drawablePadding="20dp"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:padding="10dp"
-            android:drawableLeft="@drawable/ic_action_delete"
+            android:drawableLeft="@drawable/ic_action_trash"
             android:layout_gravity="start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/design_default_color_primary_dark"
+            android:background="@color/colorWhite"
             android:text="Delete Debt"
-            android:textColor="@android:color/holo_orange_light"/>
+            android:textColor="@color/colorPrimary"/>
 
     </LinearLayout>
 </RelativeLayout>
