@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fragments.NewDebtFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,27 +81,27 @@
                 android:inputType="textMultiLine" />
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <Spinner
-                android:id="@+id/categorySpinner"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
-                android:clipChildren="true"
-                android:textColor="@color/design_default_color_primary_dark"
-                android:tag="Type of Debt" />
+                <Spinner
+                    android:id="@+id/categorySpinner"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="50dp"
+                    android:clipChildren="true"
+                    android:textColor="@color/design_default_color_primary_dark"
+                    android:tag="Type of Debt" />
 
-            <TextView
-                android:id="@+id/expiry_date"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="30dp"
-                android:textColor="@color/design_default_color_primary_dark" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/expiry_date"
+                    android:layout_width="120dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="@color/design_default_color_primary_dark" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btnDate"
@@ -121,5 +124,8 @@
                 android:text="Add Debt to List" />
 
         </LinearLayout>
+    </ScrollView>
+
+
 
 </FrameLayout>
