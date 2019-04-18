@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
     // Dialogs
     private Dialog debtDialog;
     private Dialog editDialog;
+    private Dialog paymentDialog;
 
     // Accounts
     private Users loggedInUser;
@@ -150,24 +152,25 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                     @Override
                     public void onClick(final View v) {
                         debtDialog.hide();
-                        editDialog = new Dialog(mContext);
-                        editDialog.setContentView(R.layout.edit_dialog);
-                        editDialog.show();
+                        paymentDialog = new Dialog(mContext);
+                        paymentDialog.setContentView(R.layout.payment_dialog);
+                        paymentDialog.show();
 
-                        Button button = (Button) editDialog.findViewById(R.id.btnPayment);
+                        Button button = (Button) paymentDialog.findViewById(R.id.btnPayment);
 
                         button.setOnClickListener(new View.OnClickListener() {
 
                             @Override
                             public void onClick(View arg0) {
-                                EditText payment = (EditText) editDialog.findViewById(R.id.etPayment);
+                                EditText payment = (EditText) paymentDialog.findViewById(R.id.etPayment);
 
                                 String Uid = loggedInUserFB.getUid();
                                 Debts current_debt;
                                 current_debt = mData.get(viewHolder.getAdapterPosition());
                                 fDebtsDatabase = FirebaseDatabase.getInstance().getReference().child("Debts").child(Uid).child(current_debt.getDebtID()).child("debt");
                                 Float newBalance = parseFloat(current_debt.getBalance()) + parseFloat(payment.getText().toString());
-                                fDebtsDatabase.child("balance").setValue( newBalance.toString());
+                                fDebtsDatabase.child("balance").setValue(newBalance.toString());
+                                Toast.makeText(mContext, "Payment Made", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -176,6 +179,47 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
                 editButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        debtDialog.hide();
+                        editDialog = new Dialog(mContext);
+                        editDialog.setContentView(R.layout.edit_dialog);
+                        editDialog.show();
+
+                        Button button = (Button) editDialog.findViewById(R.id.btnEdit);
+                        button.setOnClickListener(new View.OnClickListener() {
+
+                            @Override
+                            public void onClick(View arg0) {
+                                EditText etName = (EditText) editDialog.findViewById(R.id.etEditName);
+                                EditText etBalance = (EditText) editDialog.findViewById(R.id.etEditBalance);
+                                EditText etDate = (EditText) editDialog.findViewById(R.id.etEditDate);
+                                EditText etNote = (EditText) editDialog.findViewById(R.id.etEditNotes);
+
+                                String Uid = loggedInUserFB.getUid();
+                                Debts current_debt;
+                                current_debt = mData.get(viewHolder.getAdapterPosition());
+                                fDebtsDatabase = FirebaseDatabase.getInstance().getReference().child("Debts").child(Uid).child(current_debt.getDebtID()).child("debt");
+
+                                String sName = etName.getText().toString();
+                                String sBalance = etBalance.getText().toString();
+                                String sDate = etDate.getText().toString();
+                                String sNote = etNote.getText().toString();
+
+                                if (!TextUtils.isEmpty(sName)) {
+                                    fDebtsDatabase.child("debtorName").setValue(sName);
+                                }
+                                if (!TextUtils.isEmpty(sBalance)) {
+                                    fDebtsDatabase.child("initialBalance").setValue(sBalance);
+                                }
+                                if (!TextUtils.isEmpty(sDate)) {
+                                    fDebtsDatabase.child("finalDueDate").setValue(sDate);
+                                }
+                                if (!TextUtils.isEmpty(sNote)) {
+                                    fDebtsDatabase.child("debtNotes").setValue(sNote);
+                                }
+                                editDialog.dismiss();
+                                Toast.makeText(mContext, "Debt Edited", Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
                     }
                 });
