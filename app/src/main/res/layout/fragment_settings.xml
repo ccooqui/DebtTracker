@@ -22,9 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Account Settings"
-            android:textColor="@color/colorGray"
+            android:textColor="@color/colorLightGray"
             android:textSize="26sp"
-            android:textFontWeight="light"
             android:layout_gravity="center"/>
 
         <Button
